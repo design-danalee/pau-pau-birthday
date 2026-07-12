@@ -5,11 +5,13 @@
 }
 
 
+
 html {
 
     scroll-behavior:smooth;
 
 }
+
 
 
 body {
@@ -25,11 +27,14 @@ body {
 }
 
 
+
 body.locked {
 
     overflow:hidden;
 
 }
+
+
 
 
 
@@ -104,6 +109,8 @@ INTRO
 
     line-height:100%;
 
+    font-weight:400;
+
     letter-spacing:.20em;
 
     text-transform:uppercase;
@@ -124,6 +131,8 @@ INTRO
 
     font-weight:400;
 
+    letter-spacing:0;
+
 }
 
 
@@ -142,11 +151,21 @@ INTRO
 
     color:black;
 
-    font-family:"Bricolage Grotesque",sans-serif;
+    font-family:"Bricolage Grotesque", sans-serif;
 
     font-size:18px;
 
     cursor:pointer;
+
+    transition:transform .25s ease;
+
+}
+
+
+
+#begin:hover {
+
+    transform:scale(1.05);
 
 }
 
@@ -177,9 +196,9 @@ STORY
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
+
+    align-items:center;
 
     overflow:hidden;
 
@@ -205,17 +224,18 @@ STORY
 
 @keyframes zoom {
 
-from {
+    from {
 
-    transform:scale(1);
+        transform:scale(1);
 
-}
+    }
 
-to {
 
-    transform:scale(1.08);
+    to {
 
-}
+        transform:scale(1.08);
+
+    }
 
 }
 
@@ -307,11 +327,13 @@ RESET
 
     padding:12px 25px;
 
-    font-family:"Bricolage Grotesque",sans-serif;
+    font-family:"Bricolage Grotesque", sans-serif;
 
     font-size:16px;
 
     cursor:pointer;
+
+    transition:transform .25s ease, opacity .5s ease;
 
 }
 
@@ -325,10 +347,18 @@ RESET
 
 
 
+#reset:hover {
+
+    transform:scale(1.05);
+
+}
+
+
+
 
 
 /* ======================
-NAVIGATION
+ARROW NAVIGATION
 ====================== */
 
 
@@ -347,6 +377,8 @@ NAVIGATION
     gap:12px;
 
     opacity:0;
+
+    transition:opacity .5s ease;
 
 }
 
@@ -374,9 +406,25 @@ NAVIGATION
 
     color:black;
 
-    font-size:24px;
-
     cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:12px;
+
+    transition:transform .25s ease;
+
+}
+
+
+
+.navigation button:hover {
+
+    transform:scale(1.05);
 
 }
 
@@ -385,6 +433,18 @@ NAVIGATION
 .navigation button:disabled {
 
     opacity:.35;
+
+    cursor:not-allowed;
+
+}
+
+
+
+.navigation svg {
+
+    width:100%;
+
+    height:100%;
 
 }
 
@@ -411,9 +471,11 @@ FINAL BUTTON
 
     color:black;
 
-    font-family:"Bricolage Grotesque",sans-serif;
+    font-family:"Bricolage Grotesque", sans-serif;
 
     font-size:18px;
+
+    cursor:pointer;
 
 }
 
@@ -422,7 +484,7 @@ FINAL BUTTON
 
 
 /* ======================
-PROGRESS
+SLIDE COUNT
 ====================== */
 
 
@@ -430,13 +492,19 @@ PROGRESS
 
     position:fixed;
 
-    right:30px;
+    left:50%;
 
-    bottom:90px;
+    bottom:30px;
+
+    transform:translateX(-50%);
 
     z-index:20;
 
     opacity:0;
+
+    transition:opacity .5s ease;
+
+    font-size:16px;
 
 }
 
@@ -444,7 +512,9 @@ PROGRESS
 
 
 
-/* MOBILE */
+/* ======================
+MOBILE
+====================== */
 
 
 @media(max-width:768px){
@@ -453,6 +523,22 @@ PROGRESS
     .intro-content h1 {
 
         font-size:48px;
+
+    }
+
+
+
+    .intro-eyebrow {
+
+        font-size:12px;
+
+    }
+
+
+
+    .poem {
+
+        width:90vw;
 
     }
 
@@ -470,6 +556,8 @@ PROGRESS
 
         left:20px;
 
+        bottom:20px;
+
     }
 
 
@@ -478,6 +566,17 @@ PROGRESS
 
         right:20px;
 
+        bottom:20px;
+
     }
+
+
+
+    .progress {
+
+        bottom:20px;
+
+    }
+
 
 }
