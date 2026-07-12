@@ -1,22 +1,20 @@
 const story = document.getElementById("story");
 
 const beginButton = document.getElementById("begin");
-
 const resetButton = document.getElementById("reset");
 
 const previousButton = document.getElementById("previous");
-
 const nextButton = document.getElementById("next");
 
+const navigation = document.querySelector(".navigation");
 const progress = document.querySelector(".progress");
 
 const current = document.getElementById("current");
+const total = document.getElementById("total");
 
 
 let scenes = [];
-
 let activeScene = 0;
-
 let started = false;
 
 
@@ -26,8 +24,7 @@ document.body.classList.add("locked");
 
 
 
-
-// Load birthday content
+// Load JSON content
 
 fetch("content/birthday.json")
 
@@ -46,16 +43,12 @@ fetch("content/birthday.json")
 
 
         const poemLines = sceneData.text
-
             .map(line => `<div class="poem-line">${line}</div>`)
-
             .join("");
 
 
 
-
         section.innerHTML = `
-
 
             <div 
                 class="background"
@@ -63,14 +56,11 @@ fetch("content/birthday.json")
             </div>
 
 
-
             <div class="overlay"></div>
 
 
 
-
             <div class="poem">
-
 
                 <div class="poem-text">
 
@@ -79,35 +69,26 @@ fetch("content/birthday.json")
                 </div>
 
 
-
                 ${
                     sceneData.final
-
                     ?
-
                     `
                     <button class="final-button">
                         Start Over
                     </button>
                     `
-
                     :
-
                     ""
-
                 }
 
 
-
             </div>
-
 
         `;
 
 
 
         story.appendChild(section);
-
 
 
     });
@@ -117,13 +98,10 @@ fetch("content/birthday.json")
     scenes = document.querySelectorAll(".scene");
 
 
-
-    document.getElementById("total").innerText = scenes.length;
-
+    total.innerText = scenes.length;
 
 
     setupFinalButton();
-
 
 
 });
@@ -142,16 +120,13 @@ beginButton.addEventListener("click",()=>{
     const intro = document.getElementById("intro");
 
 
-
     intro.style.opacity = "0";
 
 
 
     setTimeout(()=>{
 
-
         intro.remove();
-
 
         document.body.classList.remove("locked");
 
@@ -163,13 +138,9 @@ beginButton.addEventListener("click",()=>{
     started = true;
 
 
-
     resetButton.classList.add("visible");
 
-    document.querySelector(".navigation")
-        .classList.add("visible");
-
-
+    navigation.classList.add("visible");
 
     progress.style.opacity = ".7";
 
@@ -187,7 +158,7 @@ beginButton.addEventListener("click",()=>{
 
 
 
-// Navigate to scene
+// Go to slide
 
 function goToScene(index){
 
@@ -217,7 +188,6 @@ function goToScene(index){
     current.innerText = index + 1;
 
 
-
     updateNavigation();
 
 
@@ -229,7 +199,7 @@ function goToScene(index){
 
 
 
-// Update arrow button states
+// Update arrows
 
 function updateNavigation(){
 
@@ -248,7 +218,7 @@ function updateNavigation(){
 
 
 
-// Arrow buttons
+// Button navigation
 
 previousButton.addEventListener("click",()=>{
 
@@ -313,7 +283,6 @@ document.addEventListener("keydown",(event)=>{
     }
 
 
-
 });
 
 
@@ -322,7 +291,7 @@ document.addEventListener("keydown",(event)=>{
 
 
 
-// Track scrolling manually
+// Detect manual scrolling
 
 window.addEventListener("scroll",()=>{
 
@@ -343,11 +312,8 @@ window.addEventListener("scroll",()=>{
 
 
         if(
-
             rect.top <= window.innerHeight / 2 &&
-
             rect.bottom >= window.innerHeight / 2
-
         ){
 
 
@@ -363,9 +329,7 @@ window.addEventListener("scroll",()=>{
         }
 
 
-
     });
-
 
 
 });
