@@ -1,95 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday Pau Pau!</title>
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-
-<body>
-
-
-<!-- INTRO -->
-
-<div id="intro">
-
-    <div class="intro-background"></div>
-
-    <div class="intro-overlay"></div>
-
-
-    <div class="intro-content">
-
-        <div class="intro-eyebrow">
-            FOR MOM / PAU-PAU
-        </div>
-
-
-        <h1>
-            Happy 71st Birthday!
-        </h1>
-
-
-        <button id="begin">
-            Begin
-        </button>
-
-
-    </div>
-
-</div>
-
-
-
-
-
-<div id="story"></div>
-
-
-
-
-
-<button id="reset">
-
-    Reset
-
-</button>
-
-
-
-
+<!-- NAVIGATION -->
 
 <div class="navigation">
 
 
-    <button id="previous">
+    <button id="previous" aria-label="Previous slide">
 
-        <svg viewBox="0 0 256 256">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
 
-            <line
-            x1="216"
-            y1="128"
-            x2="40"
-            y2="128"
-            />
+            <rect width="256" height="256" fill="none"/>
 
-            <polyline
-            points="112 56 40 128 112 200"
-            />
+            <line 
+                x1="128" 
+                y1="40" 
+                x2="128" 
+                y2="216" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="16"/>
+
+            <polyline 
+                points="56 144 128 216 200 144" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="16"/>
 
         </svg>
 
@@ -97,20 +34,31 @@
 
 
 
-    <button id="next">
 
-        <svg viewBox="0 0 256 256">
+    <button id="next" aria-label="Next slide">
 
-            <line
-            x1="40"
-            y1="128"
-            x2="216"
-            y2="128"
-            />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
 
-            <polyline
-            points="144 56 216 128 144 200"
-            />
+            <rect width="256" height="256" fill="none"/>
+
+            <line 
+                x1="128" 
+                y1="216" 
+                x2="128" 
+                y2="40" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="16"/>
+
+            <polyline 
+                points="56 112 128 40 200 112" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="16"/>
 
         </svg>
 
@@ -118,26 +66,3 @@
 
 
 </div>
-
-
-
-
-
-<div class="progress">
-
-<span id="current">1</span>
-/
-<span id="total">0</span>
-
-</div>
-
-
-
-
-
-<script src="script.js"></script>
-
-
-</body>
-
-</html>
