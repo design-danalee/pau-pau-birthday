@@ -1,61 +1,64 @@
 [
   {
-    "photo": "photos/birthday.jpg",
+    "photo": "photos/photo-1.jpg",
     "text": [
-      "Happy Birthday, Mom, it's your special day.",
-      "So here's a few words I'd love to say.",
-      "You've filled our lives with laughter and cheer,",
-      "And somehow get more amazing every year."
+      "For 71 years you've filled our lives with love,",
+      "With laughter, kindness, and blessings from above.",
+      "A little goofy, always full of cheer,",
+      "We are so lucky to have you here."
     ]
   },
-
   {
-    "photo": "photos/stew.jpg",
+    "photo": "photos/photo-2.jpg",
     "text": [
-      "Your beef stew's famous. There's simply no doubt.",
-      "One taste and we're all asking, \"Can I have more now?\"",
-      "You keep us well fed with love in each bite.",
-      "Making every meal feel cozy and right."
+      "Your kitchen is where the magic begins,",
+      "With beef stew that always brings everyone in.",
+      "Homemade popsicles, smoothies too,",
+      "Everything tastes better because it's made by you."
     ]
   },
-
   {
-    "photo": "photos/girls.jpg",
+    "photo": "photos/photo-3.jpg",
     "text": [
-      "For Ellie, it's smoothies mixed up with care,",
-      "And homemade popsicles always waiting there.",
-      "To my girls, you're Pau Pau, loving and fun,",
-      "The kind of grandma who's second to none."
+      "Ellie loves making smoothies by your side,",
+      "With giggles and memories we never want to hide.",
+      "And Nora eats every bite of gnoc biang with delight,",
+      "Or cruises around your house in her toy car day and night."
     ]
   },
-
   {
-    "photo": "photos/adventures.jpg",
+    "photo": "photos/photo-4.jpg",
     "text": [
-      "We've danced with Lady Gaga, laughing all the while,",
-      "Then Peanuts with the Symphony brought every face a smile.",
-      "From sunny Maui to Benaroya Hall,",
-      "The best memories are the ones we share through it all."
+      "You care for Suki and Tater with so much devotion,",
+      "Giving your cats endless love and affection.",
+      "Your generous heart shines in all that you do,",
+      "A home full of warmth because of you."
     ]
   },
-
   {
-    "photo": "photos/nora-cats.jpg",
+    "photo": "photos/photo-5.jpg",
     "text": [
-      "Nora cruises your hallway in her little toy car,",
-      "Convinced she's already a NASCAR star.",
-      "Suki and Tater have life figured out too,",
-      "Because nobody spoils them quite like you."
+      "From Maui sunsets in 2019,",
+      "To Lady Gaga lighting up the scene,",
+      "And Peanuts with the Symphony this year,",
+      "Our favorite moments are the ones we share."
     ]
   },
-
   {
-    "photo": "photos/family.jpg",
+    "photo": "photos/photo-6.jpg",
     "text": [
-      "So here's to more adventures, more music, more fun,",
-      "More family dinners enjoyed by everyone.",
-      "Happy 71st, Mom. We love you so much.",
-      "Our lives are brighter because of your love and your touch."
+      "We danced through songs and laughed along the way,",
+      "Making memories we will treasure every day.",
+      "The best adventures are always the ones with you,",
+      "Because every moment feels brand new."
+    ]
+  },
+  {
+    "photo": "photos/intro.jpg",
+    "final": true,
+    "text": [
+      "We love you!",
+      "Happy Birthday!"
     ]
   }
 ]
