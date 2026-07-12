@@ -1,9 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Pau Pau!</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- INTRO -->
+
+<div id="intro">
+
+    <div class="intro-background"></div>
+
+    <div class="intro-overlay"></div>
+
+
+    <div class="intro-content">
+
+
+        <div class="intro-eyebrow">
+            FOR MOM / PAU-PAU
+        </div>
+
+
+        <h1>
+            Happy 71st Birthday!
+        </h1>
+
+
+        <button id="begin">
+            Begin
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- STORY -->
+
+<div id="story"></div>
+
+
+
+
+
+<!-- RESET -->
+
+<button id="reset">
+
+    Reset
+
+</button>
+
+
+
+
+
 <!-- NAVIGATION -->
 
 <div class="navigation">
 
 
     <button id="previous" aria-label="Previous slide">
+
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
 
@@ -30,12 +112,15 @@
 
         </svg>
 
+
     </button>
 
 
 
 
+
     <button id="next" aria-label="Next slide">
+
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
 
@@ -62,7 +147,33 @@
 
         </svg>
 
+
     </button>
 
 
 </div>
+
+
+
+
+
+<!-- SLIDE COUNT -->
+
+<div class="progress">
+
+    <span id="current">1</span>
+    /
+    <span id="total">0</span>
+
+</div>
+
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
