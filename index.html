@@ -8,10 +8,12 @@
 
 <title>Happy Birthday Pau Pau!</title>
 
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400&display=swap" rel="stylesheet">
+
 
 <link rel="stylesheet" href="style.css">
 
@@ -55,53 +57,39 @@
 
 
 
-<!-- STORY -->
-
 <div id="story"></div>
 
 
 
 
 
-<!-- RESET -->
-
 <button id="reset">
+
     Reset
+
 </button>
 
 
 
 
 
-<!-- NAVIGATION -->
-
 <div class="navigation">
 
 
-    <button id="previous" aria-label="Previous slide">
+    <button id="previous">
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-
-            <rect width="256" height="256" fill="none"/>
+        <svg viewBox="0 0 256 256">
 
             <line
-                x1="216"
-                y1="128"
-                x2="40"
-                y2="128"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"/>
+            x1="216"
+            y1="128"
+            x2="40"
+            y2="128"
+            />
 
             <polyline
-                points="112 56 40 128 112 200"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"/>
+            points="112 56 40 128 112 200"
+            />
 
         </svg>
 
@@ -109,35 +97,22 @@
 
 
 
+    <button id="next">
 
-    <button id="next" aria-label="Next slide">
-
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-
-            <rect width="256" height="256" fill="none"/>
+        <svg viewBox="0 0 256 256">
 
             <line
-                x1="40"
-                y1="128"
-                x2="216"
-                y2="128"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"/>
+            x1="40"
+            y1="128"
+            x2="216"
+            y2="128"
+            />
 
             <polyline
-                points="144 56 216 128 144 200"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"/>
+            points="144 56 216 128 144 200"
+            />
 
         </svg>
-
 
     </button>
 
@@ -148,13 +123,11 @@
 
 
 
-<!-- PROGRESS -->
-
 <div class="progress">
 
-    <span id="current">1</span>
-    /
-    <span id="total">0</span>
+<span id="current">1</span>
+/
+<span id="total">0</span>
 
 </div>
 
