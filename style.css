@@ -1,5 +1,287 @@
+* {
+
+    box-sizing:border-box;
+
+}
+
+
+html {
+
+    scroll-behavior:smooth;
+
+}
+
+
+body {
+
+    margin:0;
+
+    background:black;
+
+    color:white;
+
+    font-family:"Bricolage Grotesque", sans-serif;
+
+}
+
+
+body.locked {
+
+    overflow:hidden;
+
+}
+
+
+
 /* ======================
-   RESET BUTTON
+INTRO
+====================== */
+
+
+#intro {
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:opacity 1s ease;
+
+}
+
+
+
+.intro-background {
+
+    position:absolute;
+
+    inset:0;
+
+    background:url("photos/intro.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+
+
+.intro-overlay {
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+
+
+.intro-content {
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+}
+
+
+
+.intro-eyebrow {
+
+    font-size:14px;
+
+    line-height:100%;
+
+    letter-spacing:.20em;
+
+    text-transform:uppercase;
+
+    margin-bottom:24px;
+
+}
+
+
+
+.intro-content h1 {
+
+    margin:0;
+
+    font-size:80px;
+
+    line-height:110%;
+
+    font-weight:400;
+
+}
+
+
+
+#begin {
+
+    margin-top:48px;
+
+    padding:16px 45px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    color:black;
+
+    font-family:"Bricolage Grotesque",sans-serif;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+/* ======================
+STORY
+====================== */
+
+
+#story {
+
+    scroll-snap-type:y mandatory;
+
+}
+
+
+
+.scene {
+
+    height:100vh;
+
+    scroll-snap-align:start;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+}
+
+
+
+.background {
+
+    position:absolute;
+
+    inset:0;
+
+    background-size:cover;
+
+    background-position:center;
+
+    animation:zoom 18s infinite alternate;
+
+}
+
+
+
+@keyframes zoom {
+
+from {
+
+    transform:scale(1);
+
+}
+
+to {
+
+    transform:scale(1.08);
+
+}
+
+}
+
+
+
+.overlay {
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+
+
+
+
+/* ======================
+POEM
+====================== */
+
+
+.poem {
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(900px,85vw);
+
+    text-align:center;
+
+}
+
+
+
+.poem-text {
+
+    font-size:28px;
+
+    line-height:120%;
+
+    font-weight:400;
+
+    letter-spacing:0;
+
+}
+
+
+
+.poem-line {
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+
+
+
+/* ======================
+RESET
 ====================== */
 
 
@@ -25,15 +307,14 @@
 
     padding:12px 25px;
 
-    font-family:"Bricolage Grotesque", sans-serif;
+    font-family:"Bricolage Grotesque",sans-serif;
 
     font-size:16px;
 
     cursor:pointer;
 
-    transition:.25s ease;
-
 }
+
 
 
 #reset.visible {
@@ -43,18 +324,11 @@
 }
 
 
-#reset:hover {
-
-    transform:scale(1.05);
-
-}
-
-
 
 
 
 /* ======================
-   NAVIGATION BUTTONS
+NAVIGATION
 ====================== */
 
 
@@ -74,8 +348,6 @@
 
     opacity:0;
 
-    transition:.5s ease;
-
 }
 
 
@@ -94,9 +366,9 @@
 
     height:48px;
 
-    border-radius:50%;
-
     border:none;
+
+    border-radius:50%;
 
     background:white;
 
@@ -104,25 +376,7 @@
 
     font-size:24px;
 
-    font-family:"Bricolage Grotesque", sans-serif;
-
     cursor:pointer;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    transition:.25s ease;
-
-}
-
-
-
-.navigation button:hover {
-
-    transform:scale(1.05);
 
 }
 
@@ -132,7 +386,34 @@
 
     opacity:.35;
 
-    cursor:not-allowed;
+}
+
+
+
+
+
+/* ======================
+FINAL BUTTON
+====================== */
+
+
+.final-button {
+
+    margin-top:48px;
+
+    padding:16px 45px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    color:black;
+
+    font-family:"Bricolage Grotesque",sans-serif;
+
+    font-size:18px;
 
 }
 
@@ -141,18 +422,53 @@
 
 
 /* ======================
-   MOBILE
+PROGRESS
 ====================== */
+
+
+.progress {
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:90px;
+
+    z-index:20;
+
+    opacity:0;
+
+}
+
+
+
+
+
+/* MOBILE */
 
 
 @media(max-width:768px){
 
 
+    .intro-content h1 {
+
+        font-size:48px;
+
+    }
+
+
+
+    .poem-text {
+
+        font-size:24px;
+
+    }
+
+
+
     #reset {
 
         left:20px;
-
-        bottom:20px;
 
     }
 
@@ -162,9 +478,6 @@
 
         right:20px;
 
-        bottom:20px;
-
     }
-
 
 }
