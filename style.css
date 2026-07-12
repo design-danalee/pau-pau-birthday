@@ -1,31 +1,39 @@
 * {
-    box-sizing: border-box;
+
+    box-sizing:border-box;
+
 }
 
 
 html {
-    scroll-behavior: smooth;
+
+    scroll-behavior:smooth;
+
 }
+
 
 
 body {
 
-    margin: 0;
+    margin:0;
 
-    background: black;
+    background:black;
 
-    color: white;
+    color:white;
 
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family:"Bricolage Grotesque", sans-serif;
 
 }
+
 
 
 body.locked {
 
-    overflow: hidden;
+    overflow:hidden;
 
 }
+
+
 
 
 
@@ -36,19 +44,19 @@ body.locked {
 
 #intro {
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    z-index: 100;
+    z-index:100;
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    justify-content:center;
 
-    justify-content: center;
+    align-items:center;
 
-    transition: opacity 1s ease;
+    transition:opacity 1s ease;
 
 }
 
@@ -56,15 +64,15 @@ body.locked {
 
 .intro-background {
 
-    position: absolute;
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
-    background-image: url("photos/intro.jpg");
+    background-image:url("photos/intro.jpg");
 
-    background-size: cover;
+    background-size:cover;
 
-    background-position: center;
+    background-position:center;
 
 }
 
@@ -72,11 +80,11 @@ body.locked {
 
 .intro-overlay {
 
-    position: absolute;
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
-    background: rgba(0,0,0,.45);
+    background:rgba(0,0,0,.45);
 
 }
 
@@ -84,71 +92,83 @@ body.locked {
 
 .intro-content {
 
-    position: relative;
+    position:relative;
 
-    z-index: 2;
+    z-index:2;
 
-    text-align: center;
+    text-align:center;
 
-    padding: 40px;
+    padding:40px;
 
 }
 
 
+
+
+
+/* Eyebrow */
+
+.intro-eyebrow {
+
+    font-size:14px;
+
+    line-height:100%;
+
+    font-weight:400;
+
+    letter-spacing:.20em;
+
+    text-transform:uppercase;
+
+    margin-bottom:24px;
+
+}
+
+
+
+
+
+/* Hero title */
 
 .intro-content h1 {
 
-    margin: 0;
+    margin:0;
 
-    font-size: clamp(3rem, 7vw, 5rem);
+    font-size:80px;
 
-    font-weight: 500;
+    line-height:110%;
 
-}
+    font-weight:400;
 
-
-
-.intro-content h2 {
-
-    margin: 10px 0;
-
-    font-size: clamp(2rem, 5vw, 3rem);
-
-    font-weight: 400;
+    letter-spacing:0;
 
 }
 
 
-
-.intro-content p {
-
-    margin-bottom: 40px;
-
-    font-size: 1.5rem;
-
-}
 
 
 
 #begin {
 
-    background: white;
+    margin-top:48px;
 
-    color: black;
+    background:white;
 
-    border: none;
+    color:black;
 
-    padding: 16px 45px;
+    border:none;
 
-    border-radius: 50px;
+    padding:16px 45px;
 
-    font-family: "Bricolage Grotesque", sans-serif;
+    border-radius:50px;
 
-    font-size: 20px;
+    font-family:"Bricolage Grotesque", sans-serif;
 
-    cursor: pointer;
+    font-size:18px;
 
-    transition: transform .25s ease;
+    cursor:pointer;
+
+    transition:transform .25s ease;
 
 }
 
@@ -156,9 +176,11 @@ body.locked {
 
 #begin:hover {
 
-    transform: scale(1.05);
+    transform:scale(1.05);
 
 }
+
+
 
 
 
@@ -167,9 +189,10 @@ body.locked {
 ====================== */
 
 
+
 #story {
 
-    scroll-snap-type: y mandatory;
+    scroll-snap-type:y mandatory;
 
 }
 
@@ -177,39 +200,43 @@ body.locked {
 
 .scene {
 
-    height: 100vh;
+    height:100vh;
 
-    scroll-snap-align: start;
+    scroll-snap-align:start;
 
-    position: relative;
+    position:relative;
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    justify-content:center;
 
-    justify-content: center;
+    align-items:center;
 
-    overflow: hidden;
+    overflow:hidden;
 
 }
+
+
 
 
 
 .background {
 
-    position: absolute;
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
-    background-color: #222;
+    background-color:#222;
 
-    background-size: cover;
+    background-size:cover;
 
-    background-position: center;
+    background-position:center;
 
-    animation: zoom 18s infinite alternate;
+    animation:zoom 18s infinite alternate;
 
 }
+
+
 
 
 
@@ -217,13 +244,13 @@ body.locked {
 
     from {
 
-        transform: scale(1);
+        transform:scale(1);
 
     }
 
     to {
 
-        transform: scale(1.08);
+        transform:scale(1.08);
 
     }
 
@@ -231,34 +258,39 @@ body.locked {
 
 
 
+
+
+
 .overlay {
 
-    position: absolute;
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
-    background: rgba(0,0,0,.45);
+    background:rgba(0,0,0,.45);
 
 }
 
 
 
+
+
 /* ======================
-   POEM TYPOGRAPHY
+   POEM
 ====================== */
 
 
 .poem {
 
-    position: relative;
+    position:relative;
 
-    z-index: 2;
+    z-index:2;
 
-    width: min(900px, 85vw);
+    width:min(900px,85vw);
 
-    padding: 40px;
+    padding:40px;
 
-    text-align: center;
+    text-align:center;
 
 }
 
@@ -266,44 +298,49 @@ body.locked {
 
 .poem p {
 
-    margin: 0;
+    margin:0;
 
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-size:32px;
 
-    font-size: 40px;
+    line-height:135%;
 
-    line-height: 135%;
+    font-weight:400;
 
-    font-weight: 400;
+    letter-spacing:0;
 
-    text-align: center;
+    text-align:center;
 
 }
 
 
 
+
+
 /* ======================
-   PROGRESS INDICATOR
+   PROGRESS
 ====================== */
 
 
 .progress {
 
-    position: fixed;
+    position:fixed;
 
-    right: 30px;
+    right:30px;
 
-    bottom: 30px;
+    bottom:30px;
 
-    z-index: 20;
+    z-index:20;
 
-    opacity: 0;
+    opacity:0;
 
-    transition: opacity .5s ease;
+    transition:opacity .5s ease;
 
-    font-size: 16px;
+    font-size:16px;
 
 }
+
+
+
 
 
 
@@ -314,33 +351,33 @@ body.locked {
 
 #reset {
 
-    position: fixed;
+    position:fixed;
 
-    left: 30px;
+    left:30px;
 
-    bottom: 30px;
+    bottom:30px;
 
-    z-index: 20;
+    z-index:20;
 
-    background: white;
+    background:white;
 
-    color: black;
+    color:black;
 
-    border: none;
+    border:none;
 
-    padding: 12px 25px;
+    padding:12px 25px;
 
-    border-radius: 50px;
+    border-radius:50px;
 
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family:"Bricolage Grotesque", sans-serif;
 
-    font-size: 16px;
+    font-size:16px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    opacity: 0;
+    opacity:0;
 
-    transition: opacity .4s ease, transform .25s ease;
+    transition:opacity .4s ease, transform .25s ease;
 
 }
 
@@ -348,7 +385,7 @@ body.locked {
 
 #reset.visible {
 
-    opacity: .9;
+    opacity:.9;
 
 }
 
@@ -356,48 +393,42 @@ body.locked {
 
 #reset:hover {
 
-    transform: scale(1.05);
+    transform:scale(1.05);
 
 }
 
 
 
+
+
 /* ======================
-   FINAL SCREEN BUTTON
+   FINAL BUTTON
 ====================== */
 
 
 .final-button {
 
-    margin-top: 40px;
+    margin-top:40px;
 
-    background: white;
+    background:white;
 
-    color: black;
+    color:black;
 
-    border: none;
+    border:none;
 
-    padding: 16px 45px;
+    padding:16px 45px;
 
-    border-radius: 50px;
+    border-radius:50px;
 
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family:"Bricolage Grotesque", sans-serif;
 
-    font-size: 20px;
+    font-size:18px;
 
-    cursor: pointer;
-
-    transition: transform .25s ease;
+    cursor:pointer;
 
 }
 
 
-
-.final-button:hover {
-
-    transform: scale(1.05);
-
-}
 
 
 
@@ -406,43 +437,51 @@ body.locked {
 ====================== */
 
 
-@media (max-width: 768px) {
+@media(max-width:768px){
+
+
+    .intro-content h1 {
+
+        font-size:48px;
+
+    }
+
+
+
+    .intro-eyebrow {
+
+        font-size:12px;
+
+    }
+
 
 
     .poem {
 
-        width: 90vw;
+        width:90vw;
 
-        padding: 20px;
+        padding:20px;
 
     }
+
 
 
     .poem p {
 
-        font-size: 28px;
-
-        line-height: 135%;
+        font-size:26px;
 
     }
+
 
 
     #reset {
 
-        left: 20px;
+        left:20px;
 
-        bottom: 20px;
-
-    }
-
-
-    .progress {
-
-        right: 20px;
-
-        bottom: 20px;
+        bottom:20px;
 
     }
+
 
 
 }
