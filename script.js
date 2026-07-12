@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-
     const story = document.getElementById("story");
+
+    const intro = document.getElementById("intro");
 
     const beginButton = document.getElementById("begin");
 
@@ -22,10 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let scenes = [];
 
-    let activeScene = 0;
+    let currentScene = 0;
 
     let started = false;
-
 
 
 
@@ -37,7 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetch("content/birthday.json")
 
-        .then(response => response.json())
+        .then(response => {
+
+            if (!response.ok) {
+
+                throw new Error("Could not load birthday.json");
+
+            }
+
+            return response.json();
+
+        })
 
         .then(data => {
 
@@ -50,19 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 section.className = "scene";
 
 
-
-                const poemLines = sceneData.text
-                    .map(line => `<div class="poem-line">${line}</div>`)
-                    .join("");
-
-
-
                 section.innerHTML = `
 
                     <div 
                         class="background"
                         style="background-image:url('${sceneData.photo}')">
                     </div>
+
 
                     <div class="overlay"></div>
 
@@ -71,7 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         <div class="poem-text">
 
-                            ${poemLines}
+                            ${sceneData.text
+                                .map(line => `<div class="poem-line">${line}</div>`)
+                                .join("")}
 
                         </div>
 
@@ -79,11 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${
                             sceneData.final
                             ?
-                            `
-                            <button class="final-button">
+                            `<button class="final-button">
                                 Start Over
-                            </button>
-                            `
+                             </button>`
                             :
                             ""
                         }
@@ -91,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
                 `;
-
 
 
                 story.appendChild(section);
@@ -104,7 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
             scenes = document.querySelectorAll(".scene");
 
 
-            total.innerText = scenes.length;
+            total.textContent = scenes.length;
+
+
+            validateImages();
 
 
             setupFinalButton();
@@ -112,11 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         })
 
+
         .catch(error => {
 
-            console.error("Could not load birthday.json:", error);
+            console.error(error);
 
         });
+
 
 
 
@@ -127,42 +135,33 @@ document.addEventListener("DOMContentLoaded", () => {
     beginButton.addEventListener("click", () => {
 
 
-        const intro = document.getElementById("intro");
-
-
         intro.style.opacity = "0";
-
 
 
         setTimeout(() => {
 
-
             intro.remove();
-
 
             document.body.classList.remove("locked");
 
 
-        }, 1000);
+        },1000);
 
 
 
         started = true;
 
 
-
         resetButton.classList.add("visible");
 
         navigation.classList.add("visible");
 
-        progress.style.opacity = ".7";
-
+        progress.style.opacity = "1";
 
 
         goToScene(0);
 
 
-
     });
 
 
@@ -171,35 +170,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    function goToScene(index) {
+    function goToScene(index){
 
 
-        if (!scenes[index]) {
+        if(!scenes[index]) {
 
             return;
 
         }
 
 
-
-        activeScene = index;
-
+        currentScene = index;
 
 
         scenes[index].scrollIntoView({
 
-            behavior: "smooth",
-
-            block: "start"
+            behavior:"smooth"
 
         });
 
 
+        current.textContent = index + 1;
 
-        current.innerText = index + 1;
 
-
-        updateNavigation();
+        updateButtons();
 
 
     }
@@ -210,13 +204,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    function updateNavigation() {
+    function updateButtons(){
 
 
-        previousButton.disabled = activeScene === 0;
+        previousButton.disabled = currentScene === 0;
 
 
-        nextButton.disabled = activeScene === scenes.length - 1;
+        nextButton.disabled = currentScene === scenes.length - 1;
 
 
     }
@@ -227,10 +221,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    previousButton.addEventListener("click", () => {
+
+    previousButton.addEventListener("click",()=>{
 
 
-        goToScene(activeScene - 1);
+        goToScene(currentScene - 1);
+
+
+    });
+
+
+
+
+
+
+    nextButton.addEventListener("click",()=>{
+
+
+        goToScene(currentScene + 1);
 
 
     });
@@ -241,24 +249,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    nextButton.addEventListener("click", () => {
+    document.addEventListener("keydown",(event)=>{
 
 
-        goToScene(activeScene + 1);
-
-
-    });
-
-
-
-
-
-
-
-    document.addEventListener("keydown", event => {
-
-
-        if (!started) {
+        if(!started){
 
             return;
 
@@ -266,21 +260,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        if (event.key === "ArrowDown") {
+        if(event.key === "ArrowDown"){
 
             event.preventDefault();
 
-            goToScene(activeScene + 1);
+            goToScene(currentScene + 1);
 
         }
 
 
 
-        if (event.key === "ArrowUp") {
+        if(event.key === "ArrowUp"){
 
             event.preventDefault();
 
-            goToScene(activeScene - 1);
+            goToScene(currentScene - 1);
 
         }
 
@@ -293,54 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    window.addEventListener("scroll", () => {
-
-
-        if (!started) {
-
-            return;
-
-        }
-
-
-
-        scenes.forEach((scene, index) => {
-
-
-            const rect = scene.getBoundingClientRect();
-
-
-
-            if (
-                rect.top <= window.innerHeight / 2 &&
-                rect.bottom >= window.innerHeight / 2
-            ) {
-
-
-                activeScene = index;
-
-
-                current.innerText = index + 1;
-
-
-                updateNavigation();
-
-
-            }
-
-
-        });
-
-
-    });
-
-
-
-
-
-
-
-    resetButton.addEventListener("click", () => {
+    resetButton.addEventListener("click",()=>{
 
 
         location.reload();
@@ -354,17 +301,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    function setupFinalButton() {
+    function setupFinalButton(){
 
 
-        const finalButton = document.querySelector(".final-button");
+        const button = document.querySelector(".final-button");
 
 
+        if(button){
 
-        if (finalButton) {
 
-
-            finalButton.addEventListener("click", () => {
+            button.addEventListener("click",()=>{
 
 
                 location.reload();
@@ -374,6 +320,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         }
+
+
+    }
+
+
+
+
+
+
+
+    function validateImages(){
+
+
+        document.querySelectorAll(".background").forEach(background=>{
+
+
+            const image = background.style.backgroundImage
+                .replace('url("','')
+                .replace('")','');
+
+
+            const test = new Image();
+
+
+            test.onload = () => {
+
+                console.log("Loaded:", image);
+
+            };
+
+
+            test.onerror = () => {
+
+                console.error("FAILED IMAGE:", image);
+
+            };
+
+
+            test.src = image;
+
+
+        });
 
 
     }
