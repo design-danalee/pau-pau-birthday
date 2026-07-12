@@ -17,15 +17,9 @@ let started = false;
 
 
 
-// Lock scrolling until Begin is clicked
-
 document.body.classList.add("locked");
 
 
-
-
-
-// Load story content
 
 fetch("content/birthday.json")
 
@@ -43,8 +37,13 @@ fetch("content/birthday.json")
 
 
 
-        section.innerHTML = `
+        const poemLines = sceneData.text
+            .map(line => `<div class="poem-line">${line}</div>`)
+            .join("");
 
+
+
+        section.innerHTML = `
 
             <div 
             class="background"
@@ -52,18 +51,18 @@ fetch("content/birthday.json")
             </div>
 
 
-
             <div class="overlay"></div>
-
 
 
 
             <div class="poem">
 
 
-                <p>
-                    ${sceneData.text.join("<br>")}
-                </p>
+                <div class="poem-text">
+
+                    ${poemLines}
+
+                </div>
 
 
 
@@ -78,7 +77,6 @@ fetch("content/birthday.json")
                     :
                     ""
                 }
-
 
 
             </div>
@@ -102,7 +100,6 @@ fetch("content/birthday.json")
     document.getElementById("total").innerText = scenes.length;
 
 
-
     setupFinalButton();
 
 
@@ -113,12 +110,42 @@ fetch("content/birthday.json")
 
 
 
+beginButton.addEventListener("click",()=>{
 
-// Begin experience
 
-beginButton.addEventListener("click", () => {
+    const intro=document.getElementById("intro");
 
-    startExperience();
+
+
+    intro.style.opacity="0";
+
+
+
+    setTimeout(()=>{
+
+
+        intro.remove();
+
+
+        document.body.classList.remove("locked");
+
+
+    },1000);
+
+
+
+    started=true;
+
+
+    resetButton.classList.add("visible");
+
+
+    progress.style.opacity=".7";
+
+
+    goToScene(0);
+
+
 
 });
 
@@ -126,52 +153,79 @@ beginButton.addEventListener("click", () => {
 
 
 
-function startExperience(){
+
+function goToScene(index){
 
 
-    const intro = document.getElementById("intro");
+    if(index < 0 || index >= scenes.length){
+
+        return;
+
+    }
+
+
+    activeScene=index;
 
 
 
-    if(intro){
+    scenes[index].scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"start"
+
+    });
 
 
-        intro.style.opacity = "0";
+
+    current.innerText=index+1;
+
+
+}
 
 
 
-        setTimeout(()=>{
 
 
-            intro.remove();
 
 
-        },1000);
+document.addEventListener("keydown",(event)=>{
+
+
+    if(!started){
+
+        return;
+
+    }
+
+
+
+    if(event.key==="ArrowDown"){
+
+
+        event.preventDefault();
+
+
+        goToScene(activeScene+1);
 
 
     }
 
 
 
-
-    document.body.classList.remove("locked");
-
-
-    started = true;
+    if(event.key==="ArrowUp"){
 
 
-
-    resetButton.classList.add("visible");
-
-
-    progress.style.opacity = ".7";
+        event.preventDefault();
 
 
+        goToScene(activeScene-1);
 
-    goToScene(0);
+
+    }
 
 
-}
+});
 
 
 
@@ -179,29 +233,84 @@ function startExperience(){
 
 
 
-// Reset experience
 
-function resetExperience(){
+window.addEventListener("scroll",()=>{
 
 
-    window.scrollTo({
+    if(!started){
 
-        top:0,
+        return;
 
-        behavior:"instant"
+    }
+
+
+
+    scenes.forEach((scene,index)=>{
+
+
+        const rect = scene.getBoundingClientRect();
+
+
+
+        if(
+            rect.top <= window.innerHeight/2 &&
+            rect.bottom >= window.innerHeight/2
+        ){
+
+            activeScene=index;
+
+
+            current.innerText=index+1;
+
+        }
+
 
     });
 
+
+});
+
+
+
+
+
+
+
+
+resetButton.addEventListener("click",()=>{
 
 
     location.reload();
 
 
+});
+
+
+
+
+
+
+
+
+function setupFinalButton(){
+
+
+    const finalButton=document.querySelector(".final-button");
+
+
+    if(finalButton){
+
+
+        finalButton.addEventListener("click",()=>{
+
+
+            location.reload();
+
+
+        });
+
+
+    }
+
+
 }
-
-
-
-
-
-
-resetButton.addEvent
