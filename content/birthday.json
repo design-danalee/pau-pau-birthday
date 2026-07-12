@@ -1,6 +1,6 @@
 [
   {
-    "photo": "photos/intro.jpg",
+    "photo": "photos/birthday.jpg",
     "text": [
       "For 71 years you've filled our lives with love,",
       "With laughter, kindness, and blessings from above.",
@@ -9,7 +9,7 @@
     ]
   },
   {
-    "photo": "photos/beef-stew.jpg",
+    "photo": "photos/stew.jpg",
     "text": [
       "Your kitchen is where the magic begins,",
       "With beef stew that always brings everyone in.",
@@ -27,6 +27,15 @@
     ]
   },
   {
+    "photo": "photos/adventures.jpg",
+    "text": [
+      "From Maui sunsets in 2019,",
+      "To Lady Gaga lighting up the scene,",
+      "And Peanuts with the Symphony this year,",
+      "Our favorite moments are the ones we share."
+    ]
+  },
+  {
     "photo": "photos/nora-cats.jpg",
     "text": [
       "You care for Suki and Tater with so much devotion,",
@@ -36,16 +45,7 @@
     ]
   },
   {
-    "photo": "photos/maui.jpg",
-    "text": [
-      "From Maui sunsets in 2019,",
-      "To Lady Gaga lighting up the scene,",
-      "And Peanuts with the Symphony this year,",
-      "Our favorite moments are the ones we share."
-    ]
-  },
-  {
-    "photo": "photos/lady-gaga.jpg",
+    "photo": "photos/family.jpg",
     "text": [
       "We danced through songs and laughed along the way,",
       "Making memories we will treasure every day.",
