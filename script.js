@@ -4,6 +4,10 @@ const beginButton = document.getElementById("begin");
 
 const resetButton = document.getElementById("reset");
 
+const previousButton = document.getElementById("previous");
+
+const nextButton = document.getElementById("next");
+
 const progress = document.querySelector(".progress");
 
 const current = document.getElementById("current");
@@ -20,6 +24,10 @@ let started = false;
 document.body.classList.add("locked");
 
 
+
+
+
+// Load birthday content
 
 fetch("content/birthday.json")
 
@@ -38,20 +46,26 @@ fetch("content/birthday.json")
 
 
         const poemLines = sceneData.text
+
             .map(line => `<div class="poem-line">${line}</div>`)
+
             .join("");
+
 
 
 
         section.innerHTML = `
 
+
             <div 
-            class="background"
-            style="background-image:url('${sceneData.photo}')">
+                class="background"
+                style="background-image:url('${sceneData.photo}')">
             </div>
 
 
+
             <div class="overlay"></div>
+
 
 
 
@@ -68,15 +82,21 @@ fetch("content/birthday.json")
 
                 ${
                     sceneData.final
+
                     ?
+
                     `
                     <button class="final-button">
                         Start Over
                     </button>
                     `
+
                     :
+
                     ""
+
                 }
+
 
 
             </div>
@@ -97,10 +117,13 @@ fetch("content/birthday.json")
     scenes = document.querySelectorAll(".scene");
 
 
+
     document.getElementById("total").innerText = scenes.length;
 
 
+
     setupFinalButton();
+
 
 
 });
@@ -110,14 +133,17 @@ fetch("content/birthday.json")
 
 
 
+
+// Begin experience
+
 beginButton.addEventListener("click",()=>{
 
 
-    const intro=document.getElementById("intro");
+    const intro = document.getElementById("intro");
 
 
 
-    intro.style.opacity="0";
+    intro.style.opacity = "0";
 
 
 
@@ -134,13 +160,19 @@ beginButton.addEventListener("click",()=>{
 
 
 
-    started=true;
+    started = true;
+
 
 
     resetButton.classList.add("visible");
 
+    document.querySelector(".navigation")
+        .classList.add("visible");
 
-    progress.style.opacity=".7";
+
+
+    progress.style.opacity = ".7";
+
 
 
     goToScene(0);
@@ -154,6 +186,9 @@ beginButton.addEventListener("click",()=>{
 
 
 
+
+// Navigate to scene
+
 function goToScene(index){
 
 
@@ -164,7 +199,8 @@ function goToScene(index){
     }
 
 
-    activeScene=index;
+
+    activeScene = index;
 
 
 
@@ -178,7 +214,11 @@ function goToScene(index){
 
 
 
-    current.innerText=index+1;
+    current.innerText = index + 1;
+
+
+
+    updateNavigation();
 
 
 }
@@ -188,6 +228,54 @@ function goToScene(index){
 
 
 
+
+// Update arrow button states
+
+function updateNavigation(){
+
+
+    previousButton.disabled = activeScene === 0;
+
+
+    nextButton.disabled = activeScene === scenes.length - 1;
+
+
+}
+
+
+
+
+
+
+
+// Arrow buttons
+
+previousButton.addEventListener("click",()=>{
+
+
+    goToScene(activeScene - 1);
+
+
+});
+
+
+
+
+nextButton.addEventListener("click",()=>{
+
+
+    goToScene(activeScene + 1);
+
+
+});
+
+
+
+
+
+
+
+// Keyboard navigation
 
 document.addEventListener("keydown",(event)=>{
 
@@ -200,29 +288,30 @@ document.addEventListener("keydown",(event)=>{
 
 
 
-    if(event.key==="ArrowDown"){
+    if(event.key === "ArrowDown"){
 
 
         event.preventDefault();
 
 
-        goToScene(activeScene+1);
+        goToScene(activeScene + 1);
 
 
     }
 
 
 
-    if(event.key==="ArrowUp"){
+    if(event.key === "ArrowUp"){
 
 
         event.preventDefault();
 
 
-        goToScene(activeScene-1);
+        goToScene(activeScene - 1);
 
 
     }
+
 
 
 });
@@ -233,6 +322,7 @@ document.addEventListener("keydown",(event)=>{
 
 
 
+// Track scrolling manually
 
 window.addEventListener("scroll",()=>{
 
@@ -253,19 +343,29 @@ window.addEventListener("scroll",()=>{
 
 
         if(
-            rect.top <= window.innerHeight/2 &&
-            rect.bottom >= window.innerHeight/2
+
+            rect.top <= window.innerHeight / 2 &&
+
+            rect.bottom >= window.innerHeight / 2
+
         ){
 
-            activeScene=index;
+
+            activeScene = index;
 
 
-            current.innerText=index+1;
+            current.innerText = index + 1;
+
+
+            updateNavigation();
+
 
         }
 
 
+
     });
+
 
 
 });
@@ -276,6 +376,7 @@ window.addEventListener("scroll",()=>{
 
 
 
+// Reset
 
 resetButton.addEventListener("click",()=>{
 
@@ -291,11 +392,13 @@ resetButton.addEventListener("click",()=>{
 
 
 
+// Final slide button
 
 function setupFinalButton(){
 
 
-    const finalButton=document.querySelector(".final-button");
+    const finalButton = document.querySelector(".final-button");
+
 
 
     if(finalButton){
