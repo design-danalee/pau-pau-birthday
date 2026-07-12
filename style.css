@@ -37,7 +37,9 @@ body.locked {
 
 
 
-/* INTRO */
+/* ======================
+   INTRO SCREEN
+====================== */
 
 
 #intro {
@@ -104,9 +106,11 @@ body.locked {
 
     font-size:14px;
 
-    letter-spacing:.20em;
-
     line-height:100%;
+
+    font-weight:400;
+
+    letter-spacing:.20em;
 
     text-transform:uppercase;
 
@@ -138,9 +142,9 @@ body.locked {
 
     padding:16px 45px;
 
-    border-radius:50px;
-
     border:none;
+
+    border-radius:50px;
 
     background:white;
 
@@ -150,13 +154,27 @@ body.locked {
 
     font-size:18px;
 
+    cursor:pointer;
+
+    transition:transform .25s ease;
+
+}
+
+
+
+#begin:hover {
+
+    transform:scale(1.05);
+
 }
 
 
 
 
 
-/* STORY */
+/* ======================
+   STORY
+====================== */
 
 
 #story {
@@ -177,15 +195,13 @@ body.locked {
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     overflow:hidden;
 
 }
-
-
 
 
 
@@ -207,20 +223,19 @@ body.locked {
 
 @keyframes zoom {
 
-from {
+    from {
 
-    transform:scale(1);
+        transform:scale(1);
+
+    }
+
+    to {
+
+        transform:scale(1.08);
+
+    }
 
 }
-
-to {
-
-    transform:scale(1.08);
-
-}
-
-}
-
 
 
 
@@ -238,7 +253,9 @@ to {
 
 
 
-/* POEM */
+/* ======================
+   POEM
+====================== */
 
 
 .poem {
@@ -257,13 +274,15 @@ to {
 
 .poem-text {
 
-    font-size:32px;
+    font-size:28px;
 
     line-height:120%;
 
     font-weight:400;
 
     letter-spacing:0;
+
+    text-align:center;
 
 }
 
@@ -281,7 +300,9 @@ to {
 
 
 
-/* BUTTONS */
+/* ======================
+   RESET BUTTON
+====================== */
 
 
 #reset {
@@ -308,6 +329,12 @@ to {
 
     font-family:"Bricolage Grotesque", sans-serif;
 
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:opacity .4s ease, transform .25s ease;
+
 }
 
 
@@ -320,6 +347,19 @@ to {
 
 
 
+#reset:hover {
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+/* ======================
+   FINAL BUTTON
+====================== */
 
 
 .final-button {
@@ -340,10 +380,27 @@ to {
 
     font-size:18px;
 
+    cursor:pointer;
+
+    transition:transform .25s ease;
+
 }
 
 
 
+.final-button:hover {
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+/* ======================
+   PROGRESS
+====================== */
 
 
 .progress {
@@ -354,14 +411,23 @@ to {
 
     bottom:30px;
 
+    z-index:20;
+
     opacity:0;
 
-    z-index:20;
+    transition:opacity .5s ease;
+
+    font-size:16px;
 
 }
 
 
 
+
+
+/* ======================
+   MOBILE
+====================== */
 
 
 @media(max-width:768px){
@@ -375,11 +441,47 @@ to {
 
 
 
+    .intro-eyebrow {
+
+        font-size:12px;
+
+    }
+
+
+
+    .poem {
+
+        width:90vw;
+
+    }
+
+
+
     .poem-text {
 
-        font-size:26px;
+        font-size:24px;
 
         line-height:120%;
+
+    }
+
+
+
+    #reset {
+
+        left:20px;
+
+        bottom:20px;
+
+    }
+
+
+
+    .progress {
+
+        right:20px;
+
+        bottom:20px;
 
     }
 
