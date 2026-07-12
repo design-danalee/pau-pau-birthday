@@ -7,13 +7,23 @@ const progress = document.querySelector(".progress");
 const current = document.getElementById("current");
 
 
+let scenes = [];
+
+let activeScene = 0;
+
+let started = false;
+
+
+
 document.body.classList.add("locked");
 
 
 
 fetch("content/birthday.json")
 
+
 .then(response => response.json())
+
 
 .then(data => {
 
@@ -23,25 +33,28 @@ fetch("content/birthday.json")
 
         const section = document.createElement("section");
 
-        section.className="scene";
+
+        section.className = "scene";
 
 
         section.innerHTML = `
 
-        <div class="background"
-        style="background-image:url('${sceneData.photo}')">
-        </div>
+            <div 
+            class="background"
+            style="background-image:url('${sceneData.photo}')">
+            </div>
 
-        <div class="overlay"></div>
+
+            <div class="overlay"></div>
 
 
-        <div class="poem">
+            <div class="poem">
 
-        <p>
-        ${sceneData.text.join("<br><br>")}
-        </p>
+                <p>
+                ${sceneData.text.join("<br><br>")}
+                </p>
 
-        </div>
+            </div>
 
         `;
 
@@ -52,13 +65,17 @@ fetch("content/birthday.json")
     });
 
 
-    document.getElementById("total").innerText=data.length;
+
+    scenes = document.querySelectorAll(".scene");
 
 
-    setupNavigation();
+    document.getElementById("total").innerText = scenes.length;
+
 
 
 });
+
+
 
 
 
@@ -66,12 +83,11 @@ fetch("content/birthday.json")
 beginButton.addEventListener("click",()=>{
 
 
-    const intro=document.getElementById("intro");
+    const intro = document.getElementById("intro");
 
 
     intro.style.opacity="0";
 
-    intro.style.transition="opacity 1s";
 
 
     setTimeout(()=>{
@@ -79,61 +95,66 @@ beginButton.addEventListener("click",()=>{
 
         intro.remove();
 
+
         document.body.classList.remove("locked");
 
-        progress.style.opacity="0.7";
+
+        started=true;
 
 
-        document.querySelector(".scene")
-        .scrollIntoView();
+        progress.style.opacity=".7";
+
+
+        goToScene(0);
+
 
 
     },1000);
 
 
+
 });
 
 
 
 
 
-function setupNavigation(){
-
-
-const scenes=document.querySelectorAll(".scene");
 
 
 
-window.addEventListener("scroll",()=>{
+function goToScene(index){
 
 
-let active=0;
+    if(index < 0 || index >= scenes.length){
+
+        return;
+
+    }
 
 
-scenes.forEach((scene,index)=>{
+
+    activeScene=index;
 
 
-const position=scene.getBoundingClientRect();
+
+    scenes[index].scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"start"
+
+    });
 
 
-if(
-position.top < window.innerHeight/2 &&
-position.bottom > window.innerHeight/2
-){
 
-active=index;
+    current.innerText=index+1;
+
+
 
 }
 
 
-});
 
-
-current.innerText=active+1;
-
-
-
-});
 
 
 
@@ -142,46 +163,84 @@ current.innerText=active+1;
 document.addEventListener("keydown",(event)=>{
 
 
-let active=0;
+    if(!started){
 
+        return;
 
-scenes.forEach((scene,index)=>{
-
-
-const position=scene.getBoundingClientRect();
-
-
-if(
-position.top < window.innerHeight/2 &&
-position.bottom > window.innerHeight/2
-){
-
-active=index;
-
-}
-
-});
+    }
 
 
 
-if(event.key==="ArrowDown"){
-
-scenes[Math.min(active+1,scenes.length-1)]
-.scrollIntoView();
-
-}
+    if(event.key==="ArrowDown"){
 
 
+        event.preventDefault();
 
-if(event.key==="ArrowUp"){
 
-scenes[Math.max(active-1,0)]
-.scrollIntoView();
+        goToScene(activeScene+1);
 
-}
+
+    }
+
+
+
+    if(event.key==="ArrowUp"){
+
+
+        event.preventDefault();
+
+
+        goToScene(activeScene-1);
+
+
+    }
+
 
 
 });
 
 
-}
+
+
+
+
+
+window.addEventListener("scroll",()=>{
+
+
+    if(!started){
+
+        return;
+
+    }
+
+
+
+    scenes.forEach((scene,index)=>{
+
+
+        const rect = scene.getBoundingClientRect();
+
+
+
+        if(
+            rect.top <= window.innerHeight/2 &&
+            rect.bottom >= window.innerHeight/2
+        ){
+
+
+            activeScene=index;
+
+
+            current.innerText=index+1;
+
+
+        }
+
+
+
+    });
+
+
+
+});
